@@ -4,7 +4,6 @@
   "description": "test project for graphql mongo and apollo",
   "main": "index.js",
   "scripts": {
-    "serve": "node index",
     "start": "node index"
   },
   "author": "benny",
