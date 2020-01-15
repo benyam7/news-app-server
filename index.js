@@ -10,7 +10,7 @@ const resolvers = require('./graphql/resolvers/index.js')
 
 const pubsub = new PubSub();
 
-const PORT = process.env.port || 8080
+const PORT = process.env.PORT || 8080
 
 const server = new ApolloServer({
     typeDefs,    // es6: the same key n value name so metioning the key will do it
