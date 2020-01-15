@@ -1,6 +1,6 @@
 const { model, Schema } = require('mongoose')
 
-
+// Mongooes Model for News
 const postNews = new Schema({
 
     body: String,

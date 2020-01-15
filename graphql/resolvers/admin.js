@@ -1,9 +1,12 @@
 const doAuth = require('../../util/auth')
 const News = require('../../models/News') 
 const { AuthenticationError } = require('apollo-server')
+
+// Mutations for Admin user 
 module.exports = {
     Mutation: {
 
+        // posts news
         async postNews(_, { newsTitle, newsBody, newsPhotoUrl } , context){
             // since positing is an authorized operation we need to check if it is comming from authorized path and jwt verification
             // we did that in separate file called auth
@@ -46,6 +49,7 @@ module.exports = {
 
         },
 
+        // Deletes News
         async deleteNews(_, { newsId }, context){
 
             const admin = doAuth(context) // the authorization will be done here

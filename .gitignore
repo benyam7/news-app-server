@@ -1,3 +1,4 @@
 node_modules
 # remove the sensetive data
 
+config.js

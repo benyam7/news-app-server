@@ -1,3 +1,5 @@
+// Validates User Input Data
+
 module.exports.validateUserData = (userName, password, confirmPassword, email) =>
 {
     const errors = {};
