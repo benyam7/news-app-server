@@ -1,7 +1,7 @@
 const { model, Schema } = require('mongoose')
 
-// Mongooes Model for News
-const postNews = new Schema({
+
+const newsSchema = new Schema({
 
     body: String,
     title: String,
@@ -21,6 +21,8 @@ const postNews = new Schema({
         }
     ],
     newsPhotoUrl: String,
+    author: String,
+    newsUrl: String,
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'
@@ -29,4 +31,4 @@ const postNews = new Schema({
 
 
 // give it a name SportNews and export it
-module.exports = model('News', postNews) 
+module.exports = model('News', newsSchema) 

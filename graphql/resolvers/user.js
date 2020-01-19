@@ -3,16 +3,12 @@ const jwt = require('jsonwebtoken')
 
 const { UserInputError, AuthenticationError } = require('apollo-server') 
 
-// Models
 const User = require('../../models/User')
-const News = require('../../models/News')
-// Config file
 const {encodingKey} = require('../../config')
-//Utilites
 const {validateUserData, validateLoginInput} = require('../../util/validators')
 const doAuth = require('../../util/auth')
-
-// Json web Token generator
+const News = require('../../models/News')
+// token generator
 const generateToken = (user) =>  {
      return jwt.sign({
         // here we list things we wanna encode
@@ -28,8 +24,7 @@ const generateToken = (user) =>  {
 module.exports = {
 
     Mutation : {
-        
-        // Logs user in
+    
         async login(_, {userName, password }){
             // import the login validator and destructure it, for userName n password
             const {errors, valid }  = validateLoginInput(userName, password)
@@ -65,7 +60,6 @@ module.exports = {
    
         },
 
-        // Registers New User
         async registerUser(_, {registerUserInput: {userName, password, confirmPassword, email }}, context, info ){
             //validate user data
 
@@ -109,8 +103,8 @@ module.exports = {
             }
         },
 
-   
-        // Creates a New Comment
+        // using () => 
+
         createComment: async (_, { newsId, body }, context ) => {
             const admin = doAuth(context) // for some reason, when decoding the token we're getting all the keys in lowwercase
            console.log(admin)
@@ -138,7 +132,6 @@ module.exports = {
             } else throw new UserInputError('News not found')
         },
 
-        // Deletes a Comment
         async deleteComment(_, {commentId, newsId }, context){
             const {userName} = doAuth(context)
             console.log(doAuth(context))
@@ -164,7 +157,6 @@ module.exports = {
            
         },
 
-        // Likes or Increaes a Views for a News
         likeNews : async (_, {newsId}, context ) => {
 
             const {userName} = doAuth(context)

@@ -1,13 +1,10 @@
 const doAuth = require('../../util/auth')
 const News = require('../../models/News') 
 const { AuthenticationError } = require('apollo-server')
-
-// Mutations for Admin user 
 module.exports = {
     Mutation: {
 
-        // posts news
-        async postNews(_, { newsTitle, newsBody, newsPhotoUrl } , context){
+        async postNews(_, { newsTitle, newsBody, author, newsPhotoUrl, newsUrl } , context){
             // since positing is an authorized operation we need to check if it is comming from authorized path and jwt verification
             // we did that in separate file called auth
 
@@ -20,9 +17,20 @@ module.exports = {
                 })
                 
             }
+
+            if (author.trim() === ''){
+                throw new Error("Author Cannot be empty",{
+                    error: "author cannot be empty"
+                })
+            }
             if(newsBody.trim() === ''){
                 throw new Error('News Body cannot be empty',
                  {   error : "News Body cannot be empty"}
+                )
+            }
+            if(newsUrl.trim() === ''){
+                throw new Error('News Body cannot be empty',
+                 {   error : "News URL cannot be empty"}
                 )
             }
             // here the admin is authorized
@@ -31,12 +39,13 @@ module.exports = {
                 title: newsTitle,
                 body: newsBody,
                 createdAt: new Date().toISOString(),
-                // admin,
+                author,
                 newsPhotoUrl,
                 likes: [],
                 comments: [],
                 user: admin.id, 
-                userName: admin.userName
+                userName: admin.userName,
+                newsUrl
                 
             });
 
@@ -49,7 +58,6 @@ module.exports = {
 
         },
 
-        // Deletes News
         async deleteNews(_, { newsId }, context){
 
             const admin = doAuth(context) // the authorization will be done here

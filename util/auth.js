@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken')
 const { encodingKey } = require('../config')
 const { AuthenticationError } = require('apollo-server')
-
-// Checks if the user is Authorized or not
 module.exports = (context) => {
 
     const authHeader = context.req.headers.authorization;
