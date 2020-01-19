@@ -1,3 +1,6 @@
+###Demo
+![News App Demo](demo/ux_demo.gif)
+
 ### News App Serve
 -  made with ❤
 
