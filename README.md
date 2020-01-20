@@ -8,7 +8,7 @@
    - MERNG
 
 ### URL to app
-Check the app using this link: https://friendly-payne-caa725.netlify.com/
+- Go interact with live version of the app: https://friendly-payne-caa725.netlify.com/
 
 ### Technogolies used
 - Backend : MongoDB, Mongoose, GraphQL, ApolloServer(For CRUD)
