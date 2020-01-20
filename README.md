@@ -11,9 +11,9 @@
 - Go interact with live version of the app: https://friendly-payne-caa725.netlify.com/
 
 ### Technogolies used
-- Backend : MongoDB, Mongoose, GraphQL, ApolloServer(For CRUD)
+- Backend : MongoDB, Mongoose, GraphQL, ApolloServer
 - Security: jsonwebtoken, bcryptjs
 - Caching: ApolloCacheInMemory
-- Client: React, SemanticUiReact
+- Client: React, ReactHooks, ContextApi, SemanticUiReact
 - Deployment-Client: netlify
 - Deployment-Server: heroku
